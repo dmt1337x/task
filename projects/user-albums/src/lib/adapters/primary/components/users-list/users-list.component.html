@@ -1,0 +1,41 @@
+<lib-navbar
+  [showSearch]="true"
+  (searchValueEvent)="searchValue($event)"
+  [showBack]="false"
+  [summaryTitle]="'Users found'"
+  [count]="(users$ | async)?.length ?? 0"
+></lib-navbar>
+
+<div class="container mt-5">
+  <ng-container *ngTemplateOutlet="sortByName"></ng-container>
+  <div class="row mt-3">
+    <div class="col-4" *ngFor="let user of users$ | async">
+      <div class="card mb-3 cursor-pointer" [routerLink]="'/users/' + user.id">
+        <img [src]="user.avatar" class="img-fluid"/>
+        <div class="pt-2 ps-1">
+          <h5 class="card-title">{{ user.name }}</h5>
+          <p class="card-text">{{ user.username }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #sortByName>
+  <div class="d-flex justify-content-end">
+    <button
+      class="btn btn-primary"
+      [disabled]="sortByNameAsc$ | async"
+      (click)="changeSort()"
+    >
+      Sort by name ASC
+    </button>
+    <button
+      class="btn btn-primary ms-3"
+      [disabled]="!(sortByNameAsc$ | async)"
+      (click)="changeSort()"
+    >
+      Sort by name DESC
+    </button>
+  </div>
+</ng-template>

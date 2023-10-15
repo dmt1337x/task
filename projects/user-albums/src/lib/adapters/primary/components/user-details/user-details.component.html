@@ -1,0 +1,35 @@
+<lib-navbar [showSearch]="false"></lib-navbar>
+
+<ng-container *ngIf="userDetails$ | async as user">
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card user-select-none">
+          <img [src]="user.avatar" class="card-img-top"/>
+          <div class="card-body">
+            <h5 libEditDetails="name" class="card-title cursor-pointer">
+              {{ user.name }}
+            </h5>
+            <p libEditDetails="username" class="card-text cursor-pointer">
+              {{ user.username }}
+            </p>
+            <p libEditDetails="email" class="card-text cursor-pointer">
+              Email: {{ user.email }}
+            </p>
+            <p libEditDetails="phone" class="card-text cursor-pointer">
+              Phone: {{ user.phone }}
+            </p>
+            <p libEditDetails="website" class="card-text cursor-pointer">
+              Website: {{ user.website }}
+            </p>
+            <div class="justify-content-between d-flex">
+              <a href="mailto:{{ user.email }}" class="btn btn-primary"
+              >Send Email</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

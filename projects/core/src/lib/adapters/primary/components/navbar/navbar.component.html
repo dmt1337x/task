@@ -1,0 +1,42 @@
+<nav class="navbar bg-dark">
+  <div class="d-flex w-100 align-items-center">
+    <div class="d-flex justify-content-start w-75 ms-4 my-3">
+      <i
+        class="bi bi-caret-left-fill text-white d-flex align-items-center me-3 size-30-px cursor-pointer"
+        *ngIf="showBack"
+        (click)="goBack()"
+      ></i>
+      <a
+        class="navbar-brand btn btn-primary text-white d-flex align-items-center justify-content-center w-25 h-75"
+        [routerLink]="'/users'"
+      >Users</a
+      >
+      <a
+        class="navbar-brand btn btn-primary text-white d-flex align-items-center justify-content-center w-25 h-75"
+        [routerLink]="'/album'"
+      >Photos</a
+      >
+    </div>
+    <div class="me-5 w-25">
+      <div class="d-flex">
+
+
+        <form *ngIf="showSearch" [formGroup]="searchForm">
+          <input
+            type="text"
+            formControlName="search"
+            placeholder="Search"
+            class="form-control mb-2"
+          />
+
+          <span class="text-white">{{ summaryTitle }}: {{ count }}</span>
+        </form>
+        <i
+          class="bi bi-x-lg reset-40px ms-3 text-danger cursor-pointer"
+          *ngIf="(search$ | async)?.length"
+          (click)="resetSearch()"
+        ></i>
+      </div>
+    </div>
+  </div>
+</nav>

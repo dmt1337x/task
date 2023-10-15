@@ -1,0 +1,41 @@
+<lib-navbar
+  [showSearch]="true"
+  (searchValueEvent)="searchValue($event)"
+  [summaryTitle]="'Available items'"
+  [count]="(photos$ | async)?.length ?? 0"
+></lib-navbar>
+
+
+<ng-container *ngIf="!(photos$ | async)?.length">
+  <ng-container *ngTemplateOutlet="noResults"></ng-container>
+</ng-container>
+
+<div class="container mt-5 w-25 justify-content-center">
+  <form [formGroup]="filterByPriceForm">
+    <input type="range" class="form-range" min="0" max="100" step="5" value="50" formControlName="price"
+           placeholder="Price"/>
+    <p>Max price: {{priceFilter$ | async | currency}}</p>
+  </form>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <ng-container *ngFor="let photo of photos$ | async">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img [src]="photo.thumbnailUrl" class="card-img-top"/>
+          <div class="card-body">
+            <h5 class="card-title">{{ photo.title }}</h5>
+            <p class="card-text cursor-pointer" [routerLink]="'/users/' + photo.authorId">Author: {{ photo.author }}</p>
+            <p class="card-text">Price: {{ photo.price }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+<ng-template #noResults>
+  <h1 class="text-info mt-5 w-100 text-center">No results....</h1>
+</ng-template>

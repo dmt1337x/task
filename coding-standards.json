@@ -1,0 +1,242 @@
+{
+  "workspace": {
+    "workspaceConfig": "angular.json",
+    "workspaceTsConfig": "tsconfig.json",
+    "libsFolder": "projects"
+  },
+  "entityRelations": {
+    "page": {
+      "component": ["HTML"]
+    },
+    "component": {
+      "commandPort": ["CONSTRUCTOR"],
+      "queryPort": ["CONSTRUCTOR"],
+      "command": ["PARAMETER"],
+      "query": ["PROPERTY"]
+    },
+    "directive": {
+      "commandPort": ["CONSTRUCTOR"],
+      "queryPort": ["CONSTRUCTOR"],
+      "command": ["PARAMETER"],
+      "query": ["PROPERTY"]
+    },
+    "guard": {
+      "queryPort": ["CONSTRUCTOR"],
+      "query": ["PROPERTY"]
+    },
+    "resolver": {
+      "commandPort": ["CONSTRUCTOR"],
+      "command": ["PARAMETER"]
+    },
+    "eventHandler": {
+      "commandPort": ["CONSTRUCTOR"],
+      "command":[ "PARAMETER"]
+    },
+    "commandPort": {
+      "command": ["PARAMETER"]
+    },
+    "queryPort": {
+      "query":[ "RETURN"]
+    },
+    "state": {
+      "command": ["PARAMETER"],
+      "query": ["RETURN"],
+      "commandPort": ["IMPLEMENTS"],
+      "queryPort": ["IMPLEMENTS"],
+      "contextPort": ["CONSTRUCTOR"],
+      "dtoPort": ["CONSTRUCTOR"],
+      "eventPort": ["CONSTRUCTOR"]
+    },
+    "contextPort": {
+      "context":  ["PARAMETER","RETURN"]
+    },
+    "dtoPort": {
+      "dto":  ["PARAMETER","RETURN"]
+    },
+    "eventPort": {
+      "event": ["PARAMETER"]
+    },
+    "storage": {
+      "contextPort": ["IMPLEMENTS"],
+      "context":  ["PARAMETER","RETURN"]
+    },
+    "dataService": {
+      "dtoPort": ["IMPLEMENTS"],
+      "httpClient": ["CONSTRUCTOR"],
+      "dto":  ["PARAMETER","RETURN"],
+      "responseObject":[ "PARAMETER"]
+    },
+    "eventDispatcher": {
+      "eventPort": ["IMPLEMENTS"],
+      "event": ["PARAMETER"]
+    }
+  },
+  "external": {
+    "httpClient": {
+      "id": "httpClient",
+      "type": "HttpClient",
+      "module": "@angular/common/http"
+    }
+  },
+  "entities": {
+    "component": {
+      "id": "component",
+      "type": "ANGULAR_COMPONENT",
+      "suffix": "Component",
+      "folder": "adapters/primary/components/$name$",
+      "insideOf": "Lib",
+      "config": {
+        "stylesExtension": "scss",
+        "viewEncapsulation": "Emulated",
+        "selector": "generated",
+        "changeDetectionStrategy": "OnPush"
+      }
+    },
+    "directive": {
+      "id": "directive",
+      "type": "ANGULAR_DIRECTIVE",
+      "suffix": "Directive",
+      "folder": "adapters/primary/directives/$name$",
+      "insideOf": "Lib"
+    },
+    "resolver": {
+      "id": "resolver",
+      "type": "ANGULAR_RESOLVER",
+      "suffix": "Resolver",
+      "folder": "adapters/primary/resolvers/$name$",
+      "insideOf": "Lib"
+    },
+    "guard": {
+      "id": "guard",
+      "type": "ANGULAR_GUARD",
+      "suffix": "Guard",
+      "folder": "adapters/primary/guards/$name$",
+      "insideOf": "Lib"
+    },
+    "eventHandler": {
+      "id": "eventHandler",
+      "type": "ANGULAR_SERVICE",
+      "suffix": "EventHandler",
+      "folder": "adapters/primary/event-handlers/$name$",
+      "insideOf": "Lib"
+    },
+    "command": {
+      "id": "command",
+      "type": "OBJECT",
+      "suffix": "Command",
+      "folder": "application/ports/primary/command",
+      "insideOf": "Lib"
+    },
+    "commandPort": {
+      "id": "commandPort",
+      "type": "ABSTRACTION",
+      "suffix": "CommandPort",
+      "folder": "application/ports/primary/command",
+      "insideOf": "Lib"
+    },
+    "query": {
+      "id": "query",
+      "type": "OBJECT",
+      "suffix": "Query",
+      "folder": "application/ports/primary/query",
+      "insideOf": "Lib"
+    },
+    "queryPort": {
+      "id": "queryPort",
+      "type": "ABSTRACTION",
+      "suffix": "QueryPort",
+      "folder": "application/ports/primary/query",
+      "insideOf": "Lib"
+    },
+    "state": {
+      "id": "state",
+      "type": "ANGULAR_SERVICE",
+      "suffix": "State",
+      "folder": "application/state",
+      "insideOf": "Lib"
+    },
+    "event": {
+      "id": "event",
+      "type": "DATA_STRUCTURE",
+      "suffix": "Event",
+      "folder": "application/ports/secondary/event",
+      "insideOf": "Lib"
+    },
+    "eventPort": {
+      "id": "eventPort",
+      "type": "ABSTRACTION",
+      "suffix": "EventPort",
+      "folder": "application/ports/secondary/event",
+      "insideOf": "Lib"
+    },
+    "dto": {
+      "id": "dto",
+      "type": "DATA_STRUCTURE",
+      "suffix": "DTO",
+      "folder": "application/ports/secondary/dto",
+      "insideOf": "Lib"
+    },
+    "dtoPort": {
+      "id": "dtoPort",
+      "type": "ABSTRACTION",
+      "suffix": "DtoPort",
+      "folder": "application/ports/secondary/dto",
+      "insideOf": "Lib"
+    },
+    "context": {
+      "id": "context",
+      "type": "DATA_STRUCTURE",
+      "suffix": "Context",
+      "folder": "application/ports/secondary/context",
+      "insideOf": "Lib"
+    },
+    "contextPort": {
+      "id": "contextPort",
+      "type": "ABSTRACTION",
+      "suffix": "ContextPort",
+      "folder": "application/ports/secondary/context",
+      "insideOf": "Lib"
+    },
+    "dataService": {
+      "id": "dataService",
+      "type": "ANGULAR_SERVICE",
+      "suffix": "Service",
+      "folder": "adapters/secondary/services/$name$",
+      "insideOf": "Lib"
+    },
+    "responseObject": {
+      "id": "responseObject",
+      "type": "DATA_STRUCTURE",
+      "suffix": "Response",
+      "folder": "adapters/secondary/services",
+      "insideOf": "Lib"
+    },
+    "storage": {
+      "id": "storage",
+      "type": "ANGULAR_SERVICE",
+      "suffix": "Storage",
+      "folder": "adapters/secondary/storages",
+      "insideOf": "Lib"
+    },
+    "eventDispatcher": {
+      "id": "eventDispatcher",
+      "type": "ANGULAR_SERVICE",
+      "suffix": "EventDispatcher",
+      "folder": "adapters/secondary/event-dispatchers",
+      "insideOf": "Lib"
+    },
+    "page": {
+      "id": "page",
+      "type": "ANGULAR_COMPONENT",
+      "suffix": "Page",
+      "folder": "pages",
+      "insideOf": "App",
+      "config": {
+        "stylesExtension": "none",
+        "viewEncapsulation": "None",
+        "selector": "none",
+        "changeDetectionStrategy": "OnPush"
+      }
+    }
+  }
+}

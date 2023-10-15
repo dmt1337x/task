@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ title }}</h4>
+  <button
+    type="button"
+    class="btn-close close pull-right"
+    (click)="bsModalRef.hide()"
+  ></button>
+</div>
+<form [formGroup]="editValueForm" class="d-flex justify-content-center my-3">
+  <input type="text" formControlName="value" class="form-control w-75"/>
+</form>
+<div class="d-flex justify-content-between mx-3 my-2">
+  <button
+    type="submit"
+    class="btn btn-success"
+    [disabled]="editValueForm.invalid"
+    (click)="update()"
+  >
+    {{ saveBtnName }}
+  </button>
+  <button class="btn btn-danger" (click)="closeModal()">
+    {{ closeBtnName }}
+  </button>
+</div>
