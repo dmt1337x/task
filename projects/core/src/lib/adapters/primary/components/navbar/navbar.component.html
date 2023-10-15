@@ -17,11 +17,9 @@
       >Photos</a
       >
     </div>
-    <div class="me-5 w-25">
-      <div class="d-flex">
-
-
-        <form *ngIf="showSearch" [formGroup]="searchForm">
+    <div class="me-5 w-25 d-flex justify-content-end">
+      <div class="d-flex w-100">
+        <form *ngIf="showSearch" [formGroup]="searchForm" class="w-75">
           <input
             type="text"
             formControlName="search"

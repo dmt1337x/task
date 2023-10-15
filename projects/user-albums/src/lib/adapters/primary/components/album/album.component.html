@@ -3,6 +3,7 @@
   (searchValueEvent)="searchValue($event)"
   [summaryTitle]="'Available items'"
   [count]="(photos$ | async)?.length ?? 0"
+  [showBack]="false"
 ></lib-navbar>
 
 <ng-container *ngIf="!(photos$ | async)?.length">
