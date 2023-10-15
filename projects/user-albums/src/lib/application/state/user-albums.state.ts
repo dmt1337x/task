@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { Observable, combineLatest, combineLatestWith } from 'rxjs';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { combineLatest, combineLatestWith, Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { GetAllUsersQueryPort } from '../ports/primary/query/get-all-users.query-port';
 import { GetUserDetailsQueryPort } from '../ports/primary/query/get-user-details.query-port';
 import { InitDetailsCommandPort } from '../ports/primary/command/init-details.command-port';
@@ -110,9 +110,9 @@ export class UserAlbumsState
     );
   }
 
-  getAllPhotos(): Observable<PhotoQuery[]> {
+  getAllPhotos(page?: number, limit?: number): Observable<PhotoQuery[]> {
     return combineLatest([
-      this._getAllPhotosDtoPort.getAllPhotos(),
+      this._getAllPhotosDtoPort.getAllPhotos(page, limit),
       this._getAllUsersDtoPort.getAllUsers(),
     ]).pipe(
       map(([photos, users]) => {
@@ -145,16 +145,12 @@ export class UserAlbumsState
   private mapToUserQuery(user: UserDTO): UserQuery {
     return new UserQuery(
       user.id,
-      this.getAvatar(user.id),
+      avatarMapper[user.id],
       user.name,
       user.username,
       user.email,
       user.phone,
       user.website
     );
-  }
-
-  private getAvatar(id: number): string {
-    return avatarMapper[id];
   }
 }
