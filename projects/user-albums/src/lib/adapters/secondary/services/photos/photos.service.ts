@@ -8,9 +8,10 @@ import { HttpClient } from '@angular/common/http';
 export class PhotosService implements GetAllPhotosDtoPort {
   constructor(private _httpClient: HttpClient) {}
 
-  getAllPhotos(): Observable<PhotoDTO[]> {
+  getAllPhotos(page: number, limit: number): Observable<PhotoDTO[]> {
     return this._httpClient.get<PhotoDTO[]>(
-      'https://jsonplaceholder.typicode.com/photos'
+      `https://jsonplaceholder.typicode.com/photos`,
+      limit ? { params: { _page: page, _limit: limit } } : {}
     );
   }
 }

@@ -7,5 +7,5 @@ export const GET_ALL_PHOTOS_DTO_PORT = new InjectionToken<GetAllPhotosDtoPort>(
 );
 
 export interface GetAllPhotosDtoPort {
-  getAllPhotos(): Observable<PhotoDTO[]>;
+  getAllPhotos(page?: number, limit?: number): Observable<PhotoDTO[]>;
 }
