@@ -7,10 +7,11 @@ import {
   UserAlbumsStateModule,
   UsersServiceModule,
 } from '@user-albums';
+import { RoutesPath } from '../routes.enum';
 
 const routes = [
   {
-    path: '',
+    path: RoutesPath.ROOT,
     component: AlbumPage,
   },
 ];

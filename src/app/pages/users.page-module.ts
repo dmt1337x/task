@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { UsersPage } from './users.page';
 import {
-  EditUserDetailsModalComponent,
   InitDetailsResolver,
   PhotosServiceModule,
   UserAlbumsStateModule,
@@ -10,14 +9,15 @@ import {
 } from '@user-albums';
 import { RouterModule } from '@angular/router';
 import { UserDetailsPage } from './user-details.page';
+import { RoutesPath } from '../routes.enum';
 
 const routes = [
   {
-    path: '',
+    path: RoutesPath.ROOT,
     component: UsersPage,
   },
   {
-    path: `:userId`,
+    path: RoutesPath.USER_DETAILS,
     component: UserDetailsPage,
     resolve: { initDetails: InitDetailsResolver },
   },
